@@ -1,0 +1,2766 @@
+Java programming
+
+1.Write a program to reverse a word using loop?(Not to use inbuilt functions)
+
+       import java.util.Scanner;
+       public class ReverseString {
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String originalString = scanner.nextLine();
+        String reversedString = "";
+       for (int i = originalString.length() - 1; i >= 0; i--) {
+            reversedString += originalString.charAt(i);
+        }
+        System.out.println("Reverse string: " + reversedString);
+    }
+}
+      Sample Input:
+String: TEMPLE
+Sample Output:
+Reverse String: ELPMET
+
+2.     Write a Java Program to Convert a Given Number of Days in Terms of Years, Weeks & Days.
+        import java.util.Scanner;
+        class weeks{
+        public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        int year,weeks,days,remain;
+        System.out.println("enter the days: ");
+        days=in.nextInt();
+        year=days/365;
+        weeks=(days%365)/7;
+        remain= days-(year*365)-(weeks*7);
+        System.out.println("days= "+days);
+        System.out.println("weeks= "+weeks);
+        System.out.println("year= "+year);
+        System.out.println("remaining days: "+remain);
+        }
+}
+Sample Input & Output::
+Enter the number of days:756
+No. of years:2
+No. of weeks:3
+No. of days:5
+
+3. Write a program to count all the prime and composite numbers entered by the user.
+import java.util.Scanner;
+public class PrimeAndCompositeNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a list of numbers (separated by spaces): ");
+        String inputString = input.nextLine();
+        String[] inputArray = inputString.split(" ");
+        int numPrimes = 0;
+        int numComposites = 0;
+        for (int i = 0; i < inputArray.length; i++) {
+            int num = Integer.parseInt(inputArray[i]);
+            if (isPrime(num)) {
+                numPrimes++;
+            } else {
+                numComposites++;
+            }
+        }
+        System.out.println("Number of prime numbers: " + numPrimes);
+        System.out.println("Number of composite numbers: " + numComposites);
+    }
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+Sample Input:
+Enter the numbers
+4
+54
+29
+71
+7
+59
+98
+23
+Sample Output:
+Composite number:3
+Prime number:5
+
+4 Write a program to check the entered user name is valid or not. Get both the inputs from the user.
+import java.util.Scanner;
+public class CheckUsernameValidity {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the user name: ");
+        String username1 = scanner.nextLine();
+        System.out.print("Reenter the user name: ");
+        String username2 = scanner.nextLine();
+        if (username1.equals(username2)) {
+            if (isValidUsername(username1)) {
+                System.out.println("Valid username");
+            } else {
+                System.out.println("Invalid username");
+            }
+        } else {
+            System.out.println("Usernames do not match");
+        }
+    }
+Sample Input:
+Enter the user name: Saveetha@789
+Reenter the user name: Saveetha@123
+Sample Output:
+     	User name is Invalid
+
+ 5. 	Find the Mth maximum number and Nth minimum number in an array and then find the sum of it and difference of it.
+      import java.util.Arrays;
+      import java.util.Scanner;
+      public class MaxMinSumDiff {
+       public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        System.out.print("Enter the array elements: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        System.out.print("Enter the value of M: ");
+        int m = scanner.nextInt();
+        System.out.print("Enter the value of N: ");
+        int o = scanner.nextInt();
+        int mthMax = findMthMaximum(arr, m);
+        int nthMin = findNthMinimum(arr, o);
+        int sum = mthMax + nthMin;
+        int diff = mthMax - nthMin;
+        System.out.println("Mth maximum number: " + mthMax);
+        System.out.println("Nth minimum number: " + nthMin);
+        System.out.println("Sum of Mth maximum and Nth minimum: " + sum);
+        System.out.println("Difference of Mth maximum and Nth minimum: " + diff);
+    }
+
+    public static int findMthMaximum(int[] arr, int m) {
+        Arrays.sort(arr);
+        int n = arr.length;
+        if (m > n) {
+            return -1;
+        }
+        return arr[n - m];
+    }
+
+    public static int findNthMinimum(int[] arr, int n) {
+        Arrays.sort(arr);
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > min && --n == 0) {
+                return arr[i];
+            }
+            min = arr[i];
+        }
+        return -1;
+    }
+}
+
+Sample Input:
+Array of elements = {14, 16, 87, 36, 25, 89, 34}
+M = 1
+N = 3
+Sample Output:
+1stMaximum Number = 89
+3rdMinimum Number = 25
+Sum = 114
+Difference = 64
+6. 	Write a program to reverse a number using loop?(Get the input from user)
+import java.util.Scanner;
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        int reverse = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num /= 10;
+        }
+        System.out.println("Reverse of the number: " + reverse);
+    }
+}
+Sample Input:
+Number: 14567
+Sample Output:
+Reverse Number: 76541
+
+7. 	Write a program to find whether the person is eligible for vote or not. And if that particular person is not eligible, then print how many years are left to be eligible.
+import java.util.Scanner;
+public class VoteEligibility {
+      public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+        int yearsLeft = 18 - age;
+        if (age >= 18) {
+            System.out.println("You are eligible to vote");
+        } else {
+            System.out.println("You are not eligible to vote");
+            System.out.println("You need to wait " + yearsLeft + " more years to be eligible");
+        }
+    }
+}
+
+Sample Input:
+ Enter your age:                                    	
+7
+Sample output:
+You are allowed to vote after 11 years
+8.	Write a program to print the total amount available in the ATM machine with the conditions applied.
+Total denominations are 2000, 500, 200, 100, get the denomination priority from the user and the total number of notes from the user to display the total available balance to the user
+import java.util.Scanner;
+public class ATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] denominations = {2000, 500, 200, 100};
+        int[] notes = new int[4];
+        int totalAmount = 0;
+        System.out.println("Enter the denomination priority (e.g. 1 for 2000, 2 for 500, etc.):");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(i+1 + ": ");
+            notes[i] = sc.nextInt();
+        }
+        for (int i = 0; i < 4; i++) {
+            totalAmount += denominations[i] * notes[i];
+        }
+        System.out.println("Total amount available in the ATM machine: " + totalAmount);
+    }
+} 
+Output
+Enter the denomination priority (e.g. 1 for 2000, 2 for 500, etc.):
+1: 5
+2: 3
+3: 2
+4: 2
+Total amount available in the ATM machine: 12100
+
+
+9. 	Write a program using choice to check
+Case 1: Given string is palindrome or not
+Case 2: Given number is palindrome or not
+
+import java.util.Scanner;
+public class Palindrome {
+   public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your choice:");
+        System.out.println("1. Check palindrome for string");
+        System.out.println("2. Check palindrome for number");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.print("Enter a string: ");
+                String str = scanner.next();
+                if (isPalindrome(str)) {
+                    System.out.println("The string is a palindrome");
+                } else {
+                    System.out.println("The string is not a palindrome");
+                }
+                break;
+            case 2:
+                System.out.print("Enter a number: ");
+                int num = scanner.nextInt();
+                if (isPalindrome(num)) {
+                    System.out.println("The number is a palindrome");
+                } else {
+                    System.out.println("The number is not a palindrome");
+                }
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+    }
+    
+    public static boolean isPalindrome(String str) {
+        int len = str.length();
+        for (int i = 0; i < len / 2; i++) {
+            if (str.charAt(i) != str.charAt(len - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static boolean isPalindrome(int num) {
+        int rev = 0, temp = num;
+        while (temp != 0) {
+            int digit = temp % 10;
+            rev = rev * 10 + digit;
+            temp /= 10;
+        }
+        return num == rev;
+    }
+}
+
+Sample Input:
+Case = 1
+String = MADAM
+Sample Output:
+Palindrome
+ 
+10. 	Find the LCM and GCD of n numbers?
+import java.io.*;
+  class GFG {
+      // gcd method returns the GCD of a and b
+    static int gcd(int a, int b) {
+       
+        // if b=0, a is the GCD
+        if (b == 0)
+            return a;
+        
+        // call the gcd() method recursively by
+        // replacing a with b and b with
+        // modulus(a,b) as long as b != 0
+        else
+            return gcd(b, a % b);
+    }
+  
+    // lcm() method returns the LCM of a and b
+    static int lcm(int a, int b, int gcdValue)
+    {
+        return Math.abs(a * b) / gcdValue;
+    }
+  
+    // Driver method
+    public static void main(String[] args) {
+  
+        int a = 20, b = 30, gcdValue;
+        gcdValue = gcd(a, b);
+        
+        // calling gcd() over
+        System.out.println("GCD = " + gcdValue);
+        
+        // calling lcm() over integers 30 and 20
+        System.out.println("LCM = " + lcm(a, b, gcdValue));
+    }
+}
+
+Output
+GCD = 10
+LCM = 60
+11.     Write a program to print Right Triangle Star Pattern
+import java.util.Scanner;
+class pattern {
+    public static void main(String[] args) {
+        int i,j,rows;
+        Scanner inputScanner = new Scanner(System.in);
+        System.out.println("no. of rows:");
+        rows= inputScanner.nextInt();
+        inputScanner.close();
+        for(i=0;i<rows;i++)
+        {
+            for(j=0;j<=i;j++)
+            System.out.print("* ");
+            System.out.print("\n");
+        }
+    }
+}
+
+	Sample Input::  n = 5
+Output:
+       	*
+     	* *
+   	* * *
+ 	* * * *
+  * * * * *
+12. 	Write a program to find the number of student users in the college, get the total users, staff users details from the client. Note for every 3 staff user there is one Non teaching staff user assigned by default.
+import java.util.Scanner;
+public class CollegeUser {
+    public static void main(String[] args) {
+        // Create Scanner object to take input from user
+        Scanner scanner = new Scanner(System.in);
+        // Take input from user for total number of users
+        System.out.print("Enter the total number of users: ");
+        int numTotalUsers = scanner.nextInt();
+        // Take input from user for staff user details
+        System.out.print("Enter the number of staff users: ");
+        int numStaffUsers = scanner.nextInt();
+        // Calculate the number of Non-teaching staff users
+        int numNonTeachingStaff = numStaffUsers / 3;
+        // Calculate the number of student users
+        int numStudentUsers = numTotalUsers - numStaffUsers - numNonTeachingStaff;
+        // Print the results
+        System.out.println("Number of student users: " + numStudentUsers);
+    }
+}
+Output
+Enter the total number of users: 856
+Enter the number of staff users: 126
+Number of student users: 688
+13. 	Write a program to convert Decimal number equivalent to Binary number and octal numbers?
+import java.util.Scanner;
+public class DecimalToBinaryAndOctal {
+   public static void main(String args[]) {
+      int decimal, binary, octal;
+      Scanner in = new Scanner(System.in);
+      System.out.print("Input Decimal number: ");
+      decimal = in.nextInt();
+      binary = DecimalToBinary(decimal);
+      System.out.println("Binary equivalent: " + binary);
+      octal = DecimalToOctal(decimal);
+      System.out.println("Octal equivalent: " + octal);
+   }
+   public static int DecimalToBinary(int decimal) {
+      int binary = 0;
+      int p = 0;
+      while(decimal != 0) {
+         binary += (decimal % 2) * Math.pow(10, p);
+         decimal = decimal/2;
+         p++;
+      }
+      return binary;
+   }
+   public static int DecimalToOctal(int decimal) {
+      int octal = 0;
+      int p = 0;
+      while(decimal != 0) {
+         octal += (decimal % 8) * Math.pow(10, p);
+         decimal = decimal/8;
+         p++;
+      }
+      return octal;
+   }
+}
+Output
+Input Decimal number: 15
+Binary equivalent: 1111
+Octal equivalent: 17
+14. 	Write a program to print the below pattern?                            	
+ import java.util.Scanner;
+public class Pattern3  
+{              
+public static void main(String[] args)   
+{  
+int n = 4;    //n is the number of rows you want to print  
+for (int i = 0; i < n; i++)   
+{  
+int number = 1;  
+System.out.printf("%" + (n - i) * 2 + "s", "");  
+for (int j = 0; j <= i; j++)   
+{  
+System.out.printf("%4d", number);  
+number = number * (i - j) / (j + 1);  
+}  
+System.out.println();  
+}  
+}  
+}  
+Output
+1
+         1   1
+    1      2    1
+  1   3      3    1
+15. 	In an organization they decide to give bonus to all the employees on New Year. A 5% bonus on salary is given to the grade A workers and 10% bonus on salary to the grade B workers. Write a program to enter the salary and grade of the employee. If the salary of the employee is less than $10,000 then the employee gets an extra 2% bonus on salary Calculate the bonus that has to be given to the employee and print the salary that the employee will get.
+import java.util.Scanner;
+public class NewYearBonus {
+	public static void main(String[] args) {
+		// Create a Scanner object
+		Scanner input = new Scanner(System.in);
+		// Ask user to enter the salary
+		System.out.println("Please enter the salary of the employee: ");
+		double salary = input.nextDouble();
+		// Ask user to enter the grade
+		System.out.println("Please enter the grade of the employee (A or B): ");
+		String grade = input.next();
+		// Calculate bonus
+		double bonus = 0;
+		if (grade.equals("A")) {
+			bonus = salary * 0.05;
+		} else if (grade.equals("B")) {
+			bonus = salary * 0.10;
+		}
+		// Add extra bonus if salary is less than $10,000
+		if (salary < 10000) {
+			bonus += salary * 0.02;
+		}
+
+		// Calculate total salary
+		double totalSalary = salary + bonus;
+
+		// Print the total salary
+		System.out.println("Bonus:  " + bonus);
+
+		System.out.println("The total salary of the employee is: " + totalSalary);
+
+		input.close();
+	}
+}
+Sample Input & Output:
+
+Please enter the salary of the employee: 50000
+Please enter the grade of the employee (A or B): B
+Bonus:  5000.0
+The total salary of the employee is: 55000.0
+
+16.Write a program to print the first n perfect numbers. (Hint Perfect number means a positive integer that is equal to the sum of its proper divisors)
+import java.util.Scanner;
+public class PerfectNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of perfect numbers you want to print: ");
+        int n = input.nextInt();
+        int count = 0;
+        int num = 1;
+        while (count < n) {
+            if (isPerfect(num)) {
+                System.out.println(num);
+                count++;
+            }
+            num++;
+        }
+    }
+    public static boolean isPerfect(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    }
+}
+
+Sample Input:
+N = 3
+Sample Output:
+First 3 perfect numbers are: 6 , 28 , 496
+17.	A Pythagorean triplet is a set of three integers a, b and c such that a2+ b2= c2. Given a limit, generate all Pythagorean Triples with values smaller than given limit?
+ import java.io.*;
+import java.util.*;
+ class GFG {
+     // Function to generate Pythagorean  triplets smaller than limit
+    static void pythagoreanTriplets(int limit)
+    {
+ 
+        // triplet: a^2 + b^2 = c^2
+        int a, b, c = 0;
+         // loop from 2 to max_limit
+        int m = 2;
+         // Limiting c would limit
+        // all a, b and c
+        while (c < limit) {
+             // now loop on j from 1 to i-1
+            for (int n = 1; n < m; ++n) {
+                // Evaluate and print
+                // triplets using
+                // the relation between
+                // a, b and c
+                a = m * m - n * n;
+                b = 2 * m * n;
+                c = m * m + n * n;
+                 if (c > limit)
+                    break;
+                 System.out.println(a + " " + b + " " + c);
+            }
+            m++;
+        }
+    }
+ 
+    // Driver Code
+    public static void main(String args[])
+    {
+        int limit = 20;
+        pythagoreanTriplets(limit);
+    }
+}
+ Output
+3 4 5
+8 6 10
+5 12 13
+15 8 17
+12 16 20
+18.	Write a program using function to calculate the simple interest. Suppose the customer is a senior citizen. He is being offered 12 percent rate of interest; for all other customers, the ROI is 10 percent.
+import java.util.Scanner;
+ import java.io.*;
+ class simpleinterest
+ {
+  public static void main(String args[])
+  {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Principal and Time:");
+                   float principal = sc.nextFloat();
+                   float time = sc.nextFloat();
+             
+        System.out.println("Press 1 for senior citizen");
+        System.out.println("Press 2 for customer");
+  
+        System.out.print("Enter your Choice: ");
+        int ch = sc.nextInt();
+         switch(ch)
+        {
+         case 1:   
+                   float SSI =principal*12*time/100;
+                   System.out.println("Simple Interest: "+SSI);
+                   break;
+     case 2:
+         float CSI =principal*10*time/100;
+                   System.out.println("Simple Interest: "+CSI);
+                   break;
+           default:System.out.println("Invalid Input");
+                  break;
+        }
+  }
+ }
+
+Output
+Enter Principal and Time:200000
+5
+Press 1 for senior citizen
+Press 2 for customer
+Enter your Choice: 1
+Simple Interest: 120000.0
+19.    Write a program to print number of factors and to print nth factor of the given number.
+import java.util.Scanner;
+public class Factors {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = input.nextInt();
+        // Print number of factors
+        int count = 0;
+        System.out.println("Number of factors is : ");
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                count++;
+                System.out.print(" "+i+" ");
+            }
+        }
+        System.out.println("Total number of factors: " + count);
+
+        // Print nth factor
+        
+        System.out.println("   Enter the index of the factor to print: ");
+        int index = input.nextInt();
+        int factorCount = 0;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                factorCount++;
+                if (factorCount == index) {
+                    System.out.println("The " + index + "th factor of " + n + " is " + i);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+Enter a number: 20
+Number of factors is : 
+1 2  4  5  10  20 
+Total number of factors: 6
+Enter the index of the factor to print: 5
+The 5th factor of 20 is 10
+20.	Write a program to print hollow square symbol pattern?
+import java.util.Scanner;
+public class HollowSquareDollar {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the square: ");
+        int size = scanner.nextInt();
+        for (int i = 1; i <= size; i++) {
+            for (int j = 1; j <= size; j++) {
+                if (i == 1 || i == size || j == 1 || j == size) {
+                    System.out.print("$ ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+OUTPUT:
+Enter the size of the square: 6
+$ $ $ $ $ $ 
+$         $ 
+$         $ 
+$         $ 
+$         $ 
+$ $ $ $ $ $
+ 21.     Java Program to Find Even Sum of Fibonacci Series Till number N?
+class FibonacciExample1{  
+public static void main(String args[])  
+{    
+ int n1=0,n2=1,n3,i,count=10, sum=0, a=0;    
+ System.out.print(n1+" "+n2);//printing 0 and 1    
+    
+ for(i=2;i<count;++i)//loop starts from 2 because 0 and 1 are already printed    
+ {    
+  n3=n1+n2;    
+if(i%2==0)
+{
+a=n3;
+sum=sum+a;
+}
+  System.out.print(" "+n3);  
+  //System.out.println(sum);
+  n1=n2;    
+  n2=n3;    
+ }    
+System.out.println("Sum of Even Indexes is"+sum);
+}}
+Ouput
+0 11 2 35 8 13 21 34
+Sum of Even Indexes is33
+ (N = 4, So here the fibonacci series will be produced from 0th term till 8th term: 0, 1, 1, 2, 3, 5, 8, 13, 21
+Sum of numbers at even indexes = 0 + 1 + 3 + 8 + 21 = 33)
+22. Write a program to enter the marks of a student in four subjects. Then calculate the total and aggregate, display the grade obtained by the student. If the student scores an aggregate greater than 75%, then the grade is Distinction. If aggregate is 60>= and <75, then the grade is First Division. If aggregate is 50 >= and <60, then the grade is Second Division. If aggregate is 40>= and <50, then the grade is Third Division. Else the grade is Fail.
+ import java.util.Scanner;
+public class StudentGrades {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+           // Read the marks of the student in four subjects
+        System.out.print("Enter the marks of the student in four subjects (out of 100): ");
+        int marks1 = input.nextInt();
+        int marks2 = input.nextInt();
+        int marks3 = input.nextInt();
+        int marks4 = input.nextInt();
+       
+        // Calculate the total marks and aggregate percentage
+        int total = marks1 + marks2 + marks3 + marks4;
+        double aggregate = total / 4.0;
+        
+        // Determine the grade based on the aggregate percentage
+        String grade;
+        if (aggregate >= 75) {
+            grade = "Distinction";
+        } else if (aggregate >= 60 && aggregate < 75) {
+            grade = "First Division";
+        } else if (aggregate >= 50 && aggregate < 60) {
+            grade = "Second Division";
+        } else if (aggregate >= 40 && aggregate < 50) {
+            grade = "Third Division";
+        } else {
+            grade = "Fail";
+        }
+        
+        // Print the total marks, aggregate percentage, and grade
+        System.out.println("Total marks: " + total);
+        System.out.println("Aggregate percentage: " + aggregate + "%");
+        System.out.println("Grade obtained: " + grade);
+    }
+}
+Input
+Enter the marks of the student in four subjects (out of 100): 80 75 90 85
+Output
+Total marks: 330
+Aggregate percentage: 82.5%
+Grade obtained: Distinction
+
+23.Write a program to print the numbers from M to N by skipping K numbers in between?
+import java.util.Scanner;
+public class SkipNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        // Read the input values M, N, and K from the user
+        System.out.print("Enter the value of M: ");
+        int m = input.nextInt();
+        
+        System.out.print("Enter the value of N: ");
+        int n = input.nextInt();
+        
+        System.out.print("Enter the value of K: ");
+        int k = input.nextInt();
+        
+        // Print the numbers from M to N by skipping K numbers in between
+        for (int i = m; i <= n; i += k+1) {
+            System.out.print(i + " ");
+        }
+    }
+}
+Input
+Enter the value of M: 2
+Enter the value of N: 20
+Enter the value of K: 3
+Output
+2 6 10 14 18
+24.Write a program for matrix addition?
+import java.util.Scanner;
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int numRows = input.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int numCols = input.nextInt();
+        int[][] matrix1 = new int[numRows][numCols];
+        int[][] matrix2 = new int[numRows][numCols];
+        int[][] sumMatrix = new int[numRows][numCols];
+        System.out.println("Enter elements of first matrix:");
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                matrix1[i][j] = input.nextInt();
+            }
+        }
+        System.out.println("Enter elements of second matrix:");
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                matrix2[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+        System.out.println("Resultant matrix after addition:");
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                System.out.print(sumMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+Sample Input:
+Mat1 = 1  2
+   5  3
+Mat2 = 2   3
+             4   1
+Sample Output:
+Mat Sum = 3	5
+                    9	4
+ 25.	Write a program to print rectangle symbol pattern.
+import java.util.Scanner;
+public class RectangleStar1 {
+	private static Scanner sc;
+	public static void main(String[] args) 
+	{
+		int rows, columns, i, j;
+		sc = new Scanner(System.in);
+		System.out.print(" Please Enter Number of Rows : ");
+		rows = sc.nextInt();	
+		System.out.print(" Please Enter Number of Columns : ");
+		columns = sc.nextInt();		
+		for(i = 1; i <= rows; i++)
+		{
+			for(j = 1; j <= columns; j++)
+			{
+				System.out.print("* "); 
+			}
+			System.out.print("\n"); 
+		}	
+	}
+}
+Output
+Please Enter Number of Rows : 6
+Please Enter Number of Columns : 12
+* * * * * * * * * * * * 
+* * * * * * * * * * * * 
+* * * * * * * * * * * * 
+* * * * * * * * * * * * 
+* * * * * * * * * * * * 
+* * * * * * * * * * * *
+
+26.    Write a program to calculate tax given the following conditions:
+a. 	If income is less than or equal to 1,50,000 then no tax
+b.	If taxable income is 1,50,001 – 3,00,000 the charge 10% tax
+c. 	If taxable income is 3,00,001 – 5,00,000 the charge 20% tax
+d.	If taxable income is above 5,00,001 then charge 30% tax
+
+import java.util.Scanner;
+public class TaxCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your income: ");
+        double income = input.nextDouble();
+        double taxableIncome = income - 150000;
+        double tax = 0;
+        if (taxableIncome <= 0) {
+            tax = 0;
+        } else if (taxableIncome <= 150000) {
+            tax = taxableIncome * 0.1;
+        } else if (taxableIncome <= 300000) {
+            tax = 15000 + ((taxableIncome - 150000) * 0.2);
+        } else if (taxableIncome <= 500000) {
+            tax = 45000 + ((taxableIncome - 300000) * 0.3);
+        } else {
+            tax = 105000 + ((taxableIncome - 500000) * 0.4);
+        }
+        System.out.println("Your taxable income is: " + taxableIncome);
+        System.out.println("Your tax is: " + tax);
+    }
+} 
+Sample Input:
+Enter the income:200000
+Sample Output:
+Your taxable income is: 50000.0
+Your tax is: 5000.0
+27. 	Write a program that would sort a list of names in alphabetical order Ascending or Descending, choice get from the user?
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SortNames {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        // Read the names from the user and store them in an ArrayList
+        ArrayList<String> names = new ArrayList<>();
+        System.out.print("Enter the names (one per line, end with an empty line): ");
+        String name = input.nextLine().trim();
+        while (!name.isEmpty()) {
+            names.add(name);
+            name = input.nextLine().trim();
+        }
+          // Read the user's choice of sorting order (ascending or descending)
+        System.out.print("Enter the sorting order (asc/desc): ");
+        String order = input.next().toLowerCase();
+        
+        // Sort the names in the desired order
+        if (order.equals("asc")) {
+            Collections.sort(names);
+        } else if (order.equals("desc")) {
+            Collections.sort(names, Collections.reverseOrder());
+        } else {
+            System.out.println("Invalid sorting order. Please enter 'asc' or 'desc'.");
+            return;
+        }
+        
+        // Print the sorted names
+        System.out.println("Sorted names:");
+        for (String n : names) {
+            System.out.println(n);
+        }
+    }
+}
+Input
+Enter the names (one per line, end with an empty line):
+Alice
+Charlie
+Bob
+Eve
+Enter the sorting order (asc/desc): desc
+Output
+Sorted names:
+Eve
+Charlie
+Bob
+Alice
+ 28.Write a program for matrix multiplication?
+public static void main(String args[]){  
+//creating two matrices    
+int a[][]={{1,1,1},{2,2,2},{3,3,3}};    
+int b[][]={{1,1,1},{2,2,2},{3,3,3}};    
+    
+//creating another matrix to store the multiplication of two matrices    
+int c[][]=new int[3][3];  //3 rows and 3 columns  
+    
+//multiplying and printing multiplication of 2 matrices    
+for(int i=0;i<3;i++){    
+for(int j=0;j<3;j++){    
+c[i][j]=0;      
+for(int k=0;k<3;k++)      
+{      
+c[i][j]+=a[i][k]*b[k][j];      
+}//end of k loop  
+System.out.print(c[i][j]+" ");  //printing matrix element  
+}//end of j loop  
+System.out.println();//new line    
+}    
+}}  
+Output
+6   6   6
+12 12 12
+18 18 18s
+
+29.Write a program to print the following pattern
+import java.util.Scanner;
+public class Pattern {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        // Read the input values from the user
+        System.out.print("Enter the number to be printed: ");
+        int num = input.nextInt();
+        
+        System.out.print("Max number of times to be printed: ");
+        int maxTimes = input.nextInt();
+        
+        // Print the pattern
+        for (int i = 1; i <= maxTimes; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(num);
+            }
+            System.out.println();
+        }
+        for (int i = maxTimes-1; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(num);
+            }
+            System.out.println();
+        }
+    }
+}
+
+Sample Input:
+Enter the number to be printed: 1
+Max Number of time printed: 3
+1
+11
+111
+11
+1
+30.     Write a program to print the special characters separately and print number of Special characters in the line?
+import java.util.Scanner;
+
+public class SpecialCharacterCounter {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a line of text: ");
+        String line = input.nextLine();
+        int specialCharCount = 0;
+        System.out.println("Special characters in the line:");
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c)) {
+                System.out.print(c + " ");
+                specialCharCount++;
+            }
+        }
+        System.out.println("\nTotal number of special characters: " + specialCharCount);
+    }
+}
+Output
+Enter a line of text: kumar@20/5/4
+Special characters in the line:
+@ / / Total number of special characters: 3
+31.    Write a program to print all the composite numbers between a and b?
+import java.util.Scanner;
+public class CompositeNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        // Read the values of a and b from the user
+        System.out.print("Enter the value of a: ");
+        int a = input.nextInt();
+        
+        System.out.print("Enter the value of b: ");
+        int b = input.nextInt();
+        
+        // Print all the composite numbers between a and b
+        System.out.println("Composite numbers between " + a + " and " + b + ":");
+        for (int i = a; i <= b; i++) {
+            if (isComposite(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+    
+    // Helper function to check if a number is composite
+    public static boolean isComposite(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= n/2; i++) {
+            if (n % i == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+Input
+Enter the value of a: 10
+Enter the value of b: 30
+Output
+Composite numbers between 10 and 30:
+10 12 14 15 16 18 20 21 22 24 25 26 27 28 30
+
+32. Write a program to print the multiplication table of number m up to n.
+
+import java.util.Scanner;
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number: ");
+        int m = sc.nextInt();
+        System.out.print("Enter the limit: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            System.out.println(m + " x " + i + " = " + (m * i));
+        }
+    }
+}
+
+Sample Input:
+M = 4
+N = 5
+Sample Output:
+1x4=4
+2x4=8
+3x4=12
+4x4=16
+5x4=20
+
+33. Write a program to read the numbers until -1 is encountered. Find the average of positive numbers and negative numbers entered by user.
+import java.util.Scanner;
+
+public class AverageNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int num, posSum = 0, negSum = 0, posCount = 0, negCount = 0;
+        
+        // Read numbers until -1 is encountered
+        System.out.println("Enter numbers (enter -1 to stop): ");
+        while (true) {
+            num = input.nextInt();
+            if (num == -1) {
+                break;
+            }
+            if (num > 0) {
+                posSum += num;
+                posCount++;
+            } else {
+                negSum += num;
+                negCount++;
+            }
+        }
+        
+        // Calculate averages of positive and negative numbers
+        double posAvg = (posCount > 0) ? ((double) posSum / posCount) : 0;
+        double negAvg = (negCount > 0) ? ((double) negSum / negCount) : 0;
+        
+        // Print the results
+        System.out.println("Average of positive numbers: " + posAvg);
+        System.out.println("Average of negative numbers: " + negAvg);
+    }
+}
+Input
+Enter numbers (enter -1 to stop): 
+5
+-3
+2
+-8
+10
+-1
+Output
+Average of positive numbers: 5.666666666666667
+Average of negative numbers: -3.0
+
+34.	Program to remove duplicates from the sorted array
+
+import java.util.Arrays;
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 2, 3, 3, 3, 4, 5, 5 };
+        
+        // Print the original array
+        System.out.println("Original array: " + Arrays.toString(arr));
+        
+        // Remove duplicates
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            if (arr[i] == arr[i+1]) {
+                for (int j = i+1; j < n-1; j++) {
+                    arr[j] = arr[j+1];
+                }
+                n--;
+                i--;
+            }
+        }
+        
+        // Create a new array without duplicates
+        int[] newArr = new int[n];
+        for (int i = 0; i < n; i++) {
+            newArr[i] = arr[i];
+        }
+        
+        // Print the array without duplicates
+        System.out.println("Array without duplicates: " + Arrays.toString(newArr));
+    }
+}
+Output
+Original array: [1, 2, 2, 3, 3, 3, 4, 5, 5]
+Array without duplicates: [1, 2, 3, 4, 5]
+
+
+
+
+
+35. write a program for banking
+
+import java.util.Scanner;
+public class Bank {
+    static int nextAccountNumber = 1000; // Starting account number
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Account[] accounts = new Account[10]; // Maximum 10 accounts
+        
+        while (true) {
+            // Print the menu and get user input
+            System.out.println("\n===== Bank Menu =====");
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Withdraw Money");
+            System.out.println("4. Check Balance");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = input.nextInt();
+            
+            switch (choice) {
+                case 1: // Create Account
+                    if (nextAccountNumber > 1009) {
+                        System.out.println("Sorry, maximum number of accounts reached.");
+                        break;
+                    }
+                    System.out.print("Enter your name: ");
+                    String name = input.next();
+                    System.out.print("Enter your initial balance: ");
+                    double balance = input.nextDouble();
+                    accounts[nextAccountNumber-1000] = new Account(nextAccountNumber++, name, balance);
+                    System.out.println("Account created. Your account number is " + (nextAccountNumber-1));
+                    break;
+                case 2: // Deposit Money
+                    System.out.print("Enter your account number: ");
+                    int depositAccNum = input.nextInt();
+                    System.out.print("Enter the amount to deposit: ");
+                    double depositAmount = input.nextDouble();
+                    accounts[depositAccNum-1000].deposit(depositAmount);
+                    System.out.println("Amount deposited. Your new balance is " + accounts[depositAccNum-1000].getBalance());
+                    break;
+                case 3: // Withdraw Money
+                    System.out.print("Enter your account number: ");
+                    int withdrawAccNum = input.nextInt();
+                    System.out.print("Enter the amount to withdraw: ");
+                    double withdrawAmount = input.nextDouble();
+                    if (accounts[withdrawAccNum-1000].withdraw(withdrawAmount)) {
+                        System.out.println("Amount withdrawn. Your new balance is " + accounts[withdrawAccNum-1000].getBalance());
+                    } else {
+                        System.out.println("Insufficient balance.");
+                    }
+                    break;
+                case 4: // Check Balance
+                    System.out.print("Enter your account number: ");
+                    int checkAccNum = input.nextInt();
+                    System.out.println("Your balance is " + accounts[checkAccNum-1000].getBalance());
+                    break;
+                case 5: // Exit
+                    System.out.println("Goodbye.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+
+class Account {
+    private int accountNumber;
+    private String name;
+    private double balance;
+    
+    public Account(int accountNumber, String name, double balance) {
+        this.accountNumber = accountNumber;
+        this.name = name;
+        this.balance = balance;
+    }
+    
+    public void deposit(double amount) {
+        balance += amount;
+    }
+    
+    public boolean withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            return true;
+        }
+        return false;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+}
+OUTPUT
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 1
+Enter your name: xxx
+Enter your initial balance: 1000
+Account created. Your account number is 1000
+
+===== Bank Menu =====1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 2
+Enter your account number: 1000
+Enter the amount to deposit: 2000
+Amount deposited. Your new balance is 3000.0
+
+===== Bank Menu =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 3
+Enter your account number: 1000
+Enter the amount to withdraw: 1200
+Amount withdrawn. Your new balance is 1800.0
+
+===== Bank Menu =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 4
+Enter your account number: 1000
+Your balance is 1800.0
+
+===== Bank Menu =====1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 5 
+36.	Write a program to print n prime numbers after nth Prime number
+import java.util.Scanner;
+public class PrimeNumbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the starting prime number: ");
+        int start = input.nextInt();
+        System.out.print("Enter the number of primes to print: ");
+        int count = input.nextInt();
+        int num = start;
+        int found = 0;
+
+        while (found < count) {
+            if (isPrime(num)) {
+                found++;
+                if (found > 1) {
+                    System.out.print(", ");
+                }
+                System.out.print(num);
+            }
+            num++;
+        }
+    }
+
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+Input
+Enter the starting prime number: 2
+Enter the number of primes to print: 4
+Output
+2, 3, 5, 7
+
+37.	Write a program to print the Inverted Full Pyramid pattern?
+import java.util.Scanner;
+public class InvertedPyramidPattern {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int rows = sc.nextInt();
+        for (int i = rows; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
+
+OUTPUT:
+Enter the number of rows: 5
+* * * * *
+* * * *
+* * *
+* *
+*
+ 
+38.	Write a program to read a character until a * is encountered. Also count the number of uppercase, lowercase, and numbers entered by the users.
+
+import java.util.Scanner;
+public class CharacterCount {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int upperCount = 0, lowerCount = 0, numberCount = 0;
+
+        System.out.println("Enter * to exit...");
+        while (true) {
+            System.out.print("Enter any character: ");
+            char ch = sc.next().charAt(0);
+            if (ch == '*') {
+                break;
+            } else if (Character.isUpperCase(ch)) {
+                upperCount++;
+            } else if (Character.isLowerCase(ch)) {
+                lowerCount++;
+            } else if (Character.isDigit(ch)) {
+                numberCount++;
+            }
+        }
+
+        System.out.println("Total count of lower case: " + lowerCount);
+        System.out.println("Total count of upper case: " + upperCount);
+        System.out.println("Total count of numbers: " + numberCount);
+    }
+}
+Input
+Enter * to exit...
+Enter any character: W
+Enter any character: d
+Enter any character: A
+Enter any character: G
+Enter any character: g
+Enter any character: H
+Enter any character: *
+Output
+Total count of lower case: 2
+Total count of upper case: 4
+Total count of numbers: 0
+39.	Find the Mean, Median, Mode of the array of numbers?
+import java.util.*;
+
+public class ArrayStats {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        // Calculate the mean
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+        double mean = (double) sum / n;
+        
+        // Calculate the median
+        Arrays.sort(arr);
+        double median;
+        if (n % 2 == 0) {
+            median = (double) (arr[n/2-1] + arr[n/2]) / 2;
+        } else {
+            median = arr[n/2];
+        }
+        
+        // Calculate the mode
+        int maxCount = 0, mode = arr[0];
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = i+1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                mode = arr[i];
+            }
+        }
+        
+        // Print the results
+        System.out.println("Mean = " + mean);
+        System.out.println("Median = " + median);
+        System.out.println("Mode = " + mode);
+    }
+}
+Input
+Enter the size of the array: 7
+Enter the elements of the array:16 18 27 16 23 21 19
+Output
+Mean = 20.0
+Median = 19.0
+Mode = 16
+ 
+40.    Find the factorial of n?
+import java.util.Scanner;
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number to find its factorial: ");
+        int n = input.nextInt();
+        int factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        System.out.println("The factorial of " + n + " is: " + factorial);
+    }
+}
+
+Sample Input:
+N = 4
+Sample Output:
+4 Factorial = 24
+
+41. Factors of N
+public class Main {
+
+  public static void main(String[] args) {
+
+    // positive number
+    int number = 60;
+
+    System.out.print("Factors of " + number + " are: ");
+
+    // loop runs from 1 to 60
+    for (int i = 1; i <= number; ++i) {
+
+      // if number is divided by i
+      // i is the factor
+      if (number % i == 0) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+}
+OUTPUT
+Factors of 60 are: 1 2 3 4 5 6 10 12 15 20 30 60
+42. Write a Program to create a list of all numbers in a range which are perfect squares and the sum of the digits of the number is less than 10.
+import java.util.*;
+
+public class PerfectSquare {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter lower range: ");
+        int lower = sc.nextInt();
+        System.out.print("Enter upper range: ");
+        int upper = sc.nextInt();
+        List<Integer> result = new ArrayList<>();
+        for (int i = lower; i <= upper; i++) {
+            int sqrt = (int) Math.sqrt(i);
+            if (sqrt * sqrt == i && sumOfDigits(i) < 10) {
+                result.add(i);
+            }
+        }
+        System.out.println(result);
+    }
+
+    public static int sumOfDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+}
+Input
+Enter lower range: 1
+Enter upper range: 40
+Output
+[1,4, 9, 16, 25, 36]  	
+
+    	
+43.	Find the year of the given date is leap year or not
+import java.util.*;
+public class LeapYear {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Date (dd/mm/yyyy): ");
+        String inputDate = sc.nextLine();
+        int year = Integer.parseInt(inputDate.substring(6));
+        if ((year % 4 == 0) {
+            System.out.println("Given year is a Leap Year");
+        } else {
+            System.out.println("Given year is a Non Leap Year");
+        }
+    }
+}
+Input
+Enter Date (dd/mm/yyyy): 04/11/1947
+Output
+Given year is a Non Leap Year
+44. Write a program to calculate the factorial of number using recursive function.
+import java.util.Scanner;
+public class RecursiveFactorialCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number to find its factorial: ");
+        int n = input.nextInt();
+        int factorial = recursiveFactorial(n);
+        System.out.println("The factorial of " + n + " is: " + factorial);
+    }
+    public static int recursiveFactorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * recursiveFactorial(n - 1);
+        }
+    }
+}
+
+Sample Input & Output:
+Enter the value of n: 6
+Sample Input & Output:
+The factorial of 6 is: 720
+45.	Write a program to print the number of vowels in the given statement?
+import java.util.Scanner;
+public class VowelCounter {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a statement to count the number of vowels: ");
+        String statement = input.nextLine();
+        int count = 0;
+        for (int i = 0; i < statement.length(); i++) {
+            char c = statement.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                count++;
+            }
+        }
+        System.out.println("The number of vowels in the statement is: " + count);
+    }
+}
+Output
+Enter a statement to count the number of vowels: saveetha
+The number of vowels in the statement is: 4
+46.	Write a program to print unique permutations of a given number
+import java.util.*;
+
+public class UniquePermutations {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Given Number: ");
+        String input = sc.nextLine();
+        Set<String> permutations = new HashSet<>();
+        generatePermutations("", input, permutations);
+        System.out.println("Permutations are:");
+        for (String permutation : permutations) {
+            System.out.println(permutation);
+        }
+    }
+
+    public static void generatePermutations(String prefix, String suffix, Set<String> permutations) {
+        int n = suffix.length();
+        if (n == 0) {
+            permutations.add(prefix);
+        } else {
+            for (int i = 0; i < n; i++) {
+                generatePermutations(prefix + suffix.charAt(i), suffix.substring(0, i) + suffix.substring(i + 1), permutations);
+            }
+        }
+    }
+}
+Input
+Given Number: 143
+Output
+Permutations are:143
+341
+134
+431
+413
+314
+47.	Write a program to print consonants and vowels separately in the given word
+import java.util.Scanner;
+public class VowelConsonantSeparator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a word to separate its vowels and consonants: ");
+        String word = input.nextLine();
+        String vowels = "";
+        String consonants = "";
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                vowels += c;
+            } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+                consonants += c;
+            }
+        }
+        System.out.println("The vowels in the word are: " + vowels);
+        System.out.println("The consonants in the word are: " + consonants);
+    }
+}
+
+Sample Input:
+Given Word: Engineering
+Sample Output:
+Consonants: n g n r n g
+Vowels: e i e ei
+48.	Write a Program to create an array with the First Element as the Number and Second Element as the Square of the Number.
+import java.util.*;
+public class NumberSquaredArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the lower range: ");
+        int lower = sc.nextInt();
+        System.out.print("Enter the upper range: ");
+        int upper = sc.nextInt();
+        int size = upper - lower + 1;
+        int[][] array = new int[size][2];
+        for (int i = 0; i < size; i++) {
+            int num = lower + i;
+            array[i][0] = num;
+            array[i][1] = num * num;
+        }
+        System.out.println(Arrays.deepToString(array));
+    }
+}
+Input
+Enter the lower range: 45
+Enter the upper range: 49
+Output
+[[45, 2025], [46, 2116], [47, 2209], [48, 2304], [49, 2401]]
+49.	Write a program to print the Negative Fibonacci series.
+public class NegativeFibonacci {
+    public static void main(String[] args) {
+        int n = 10; 
+        int[] fib = new int[n];
+        fib[0] = 0;
+        fib[1] = -1;
+        for (int i = 2; i < n; i++) {
+            fib[i] = fib[i-1] + fib[i-2];
+            if (fib[i] >= 0) {
+                fib[i] = -fib[i];
+            }
+        }
+        System.out.println("Negative Fibonacci series:");
+        for (int i = 0; i < n; i++) {
+            System.out.print(fib[i] + " ");
+        }
+    }
+}
+OUTPUT:Negative Fibonacci series:
+0 -1 -1 -2 -3 -5 -8 -13 -21 -34
+
+Sample Input:
+Enter the n value: 6
+Sample Output:
+0    	1    	1    	2    	3    	5
+ Test Condition: Implement negative Fibonacci series
+50. 	Write a program to print the below pattern
+import java.util.Scanner;
+public class NumberPattern {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int n = sc.nextInt();
+        sc.close();
+        
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+1
+2 2
+3  3  3	
+4  4   4   4
+ 
+51. 	Write a program to find the square, cube of the given decimal number
+import java.util.Scanner;
+
+public class SquareCubeDecimal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        double number = sc.nextDouble();
+        double square = number * number;
+        double cube = number * number * number;
+        System.out.printf("Square of %.2f is %.2f\n", number, square);
+        System.out.printf("Cube of %.2f is %.2f\n", number, cube);
+    }
+}
+Input
+Enter a decimal number: 0.6
+Output
+Square of 0.60 is 0.36
+Cube of 0.60 is 0.22
+52.	Program to find the frequency of each element in the array.
+public class Frequency {  
+    public static void main(String[] args) {  
+        //Initialize array  
+        int [] arr = new int [] {1, 2, 8, 3, 2, 2, 2, 5, 1};  
+        //Array fr will store frequencies of element  
+        int [] fr = new int [arr.length];  
+        int visited = -1;  
+        for(int i = 0; i < arr.length; i++){  
+            int count = 1;  
+            for(int j = i+1; j < arr.length; j++){  
+                if(arr[i] == arr[j]){  
+                    count++;  
+                    //To avoid counting same element again  
+                    fr[j] = visited;  
+                }  
+            }  
+            if(fr[i] != visited)  
+                fr[i] = count;  
+        }  
+  
+        //Displays the frequency of each element present in array  
+        System.out.println("---------------------------------------");  
+        System.out.println(" Element | Frequency");  
+        System.out.println("---------------------------------------");  
+        for(int i = 0; i < fr.length; i++){  
+            if(fr[i] != visited)  
+                System.out.println("    " + arr[i] + "    |    " + fr[i]);  
+        }  
+        System.out.println("----------------------------------------");  
+    }}  
+Sample Input & Output:
+{1, 2, 8, 3, 2, 2, 2, 5, 1}
+Element | Frequency
+--------------------------
+1           |     	2
+2           |     	4
+8           |   	  1
+3           |     	1
+5           |     	1
+ 
+53.	Write a program to convert the Binary to Decimal, Octal
+import java.util.Scanner;
+public class DecimalToBinaryAndOctal {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = input.nextInt();
+        String binary = toBinary(decimal);
+        System.out.println("Binary equivalent: " + binary);
+        String octal = toOctal(decimal);
+        System.out.println("Octal equivalent: " + octal);
+    }
+
+    public static String toBinary(int decimal) {
+        String binary = "";
+        while (decimal > 0) {
+            int rem = decimal % 2;
+            binary = rem + binary;
+            decimal = decimal / 2;
+        }
+        return binary;
+    }
+    public static String toOctal(int decimal) {
+        String octal = "";
+        while (decimal > 0) {
+            int rem = decimal % 8;
+            octal = rem + octal;
+            decimal = decimal / 8;
+        }
+        return octal;
+    }
+}
+
+Sample Input:
+Given Number: 1101
+Sample Output:
+Decimal Number: 13
+Octal:15
+54.   Write a program to print the below pattern
+public class NumberPattern {
+    public static void main(String[] args) {
+        int n = 4;
+        int count = 1;
+            for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(count * count + "\t");
+                count++;
+            }
+                for (int j = i+1; j <= n; j++) {
+                System.out.print("\t");
+            }
+                System.out.println();
+        }
+    }
+}
+
+Output
+
+
+1
+4 	9
+16  	 25	36
+49   	64	81	100
+
+55. Find the maximum of three integers using looping.
+import java.util.Scanner;
+public class MaximumOfThreeIntegers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the first integer: ");
+        int a = input.nextInt();
+         System.out.print("Enter the second integer: ");
+        int b = input.nextInt();
+         System.out.print("Enter the third integer: ");
+        int c = input.nextInt();
+         int max = a; // assume first integer is the maximum
+         // compare second and third integers with the maximum and update if necessary
+        for (int i = 2; i <= 3; i++) {
+            if (i == 2 && b > max) {
+                max = b;
+            } else if (i == 3 && c > max) {
+                max = c;
+            }
+        }
+         System.out.println("The maximum of " + a + ", " + b + ", and " + c + " is " + max + ".");
+    }
+}
+OUTPUT:Enter the first integer: 25
+Enter the second integer: 5
+Enter the third integer: 30
+The maximum of 25, 5, and 30 is 30.
+56.	Write a program to check if a given year is leap year or not. If it is leap year then print the next leap year, if it is non leap year then print the previous leap year.
+import java.util.Scanner;
+public class LeapYear {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = sc.nextInt();
+        if (year % 4 == 0 ) {
+            // leap year
+            System.out.println(year + " is a leap year.");
+            int nextLeapYear = year + (4 - year % 4);
+            System.out.println("The next leap year is " + nextLeapYear + ".");
+        } else {
+            // non-leap year
+            System.out.println(year + " is not a leap year.");
+            int prevLeapYear = year - year % 4;
+            while (prevLeapYear % 4 != 0) {
+                prevLeapYear -= 4;
+            }
+            System.out.println("The previous leap year is " + prevLeapYear + ".");
+        }
+    }
+}
+Input
+Enter a year: 1997
+Output
+1997 is not a leap year.The previous leap year is 1996.
+57.	Find the nth odd number after n odd number
+import java.util.Scanner;
+public class NthOddNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = input.nextInt();
+        System.out.print("Enter the value of nth: ");
+        int nth = input.nextInt();
+        int count = 0;
+        int i = n;
+        while (count < nth) {
+            if (i % 2 != 0) {
+                count++;
+                if (count == nth) {
+               System.out.println("The " + nth + "th odd number after " + n + " is: " + i);
+                }
+            }
+            i++;
+        }
+    }
+}
+OUTPUT:Enter the value of n: 3
+Enter the value of nth: 8
+The 8th odd number after 3 is: 17
+58.	Program to find whether the given number is Armstrong number or not
+import java.util.Scanner;
+public class ArmstrongNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number to check if it is an Armstrong number: ");
+        int number = input.nextInt();
+        int originalNumber = number;
+        int sum = 0;
+        int numDigits = String.valueOf(number).length();
+        while (number > 0) {
+            int digit = number % 10;
+            sum += Math.pow(digit, numDigits);
+            number /= 10;
+        }
+        if (sum == originalNumber) {
+            System.out.println(originalNumber + " is an Armstrong number.");
+        } else {
+            System.out.println(originalNumber + " is not an Armstrong number.");
+        }
+    }
+}
+OUTPUT:Enter a number to check if it is an Armstrong number: 153
+153 is an Armstrong number.
+
+59.	Write a program to arrange the letters of the word alphabetically in reverse order
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+public class ReverseAlphabets {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
+        Character[] chars = new Character[word.length()];
+        for (int i = 0; i < chars.length; i++) {
+            chars[i] = word.charAt(i);
+        }
+        Arrays.sort(chars, Collections.reverseOrder());
+        StringBuilder sb = new StringBuilder();
+        for (char c : chars) {
+            sb.append(c);
+        }
+        String reversedWord = sb.toString();
+        System.out.println("Reversed alphabetically: " + reversedWord);
+    }
+}
+OUTPUT:
+Enter a word: MOSQUE
+Reversed alphabetically: USQOME
+
+60.	Write a program that accepts a string from user and displays the same string after removing vowels from it.
+
+import java.util.Scanner;
+public class RemoveVowels {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        String output = removeVowels(input);
+        System.out.println("String without vowels: " + output);
+    }
+    private static String removeVowels(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!isVowel(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+                || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+}
+OUTPUT:
+Enter a string: we can play the game
+String without vowels: w cn ply thgm
+61.	Write a program to find the sum of digits of N digit number (sum should be single digit)
+import java.util.Scanner;
+public class SumOfDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the value of N
+        System.out.print("Enter N value: ");
+        int n = sc.nextInt();
+
+        // Read the N digit number
+        System.out.print("Enter " + n + " digit number: ");
+        int num = sc.nextInt();
+
+        int sum = 0;
+
+        // Calculate the sum of digits
+        while (num > 0 || sum > 9) {
+            if (num == 0) {
+                num = sum;
+                sum = 0;
+            }
+            sum += num % 10;
+            num /= 10;
+        }
+
+        // Display the result
+        System.out.println("Sum of digits: " + sum);
+    }
+}
+Input
+Enter N value: 3
+Enter 3 digit number: 143
+Output
+Sum of digits: 8
+
+62. To find Linear Search
+public class LinearSearchExample{    
+public static int linearSearch(int[] arr, int key){    
+        for(int i=0;i<arr.length;i++){    
+            if(arr[i] == key){    
+                return i;    
+            }    
+        }    
+        return -1;    
+    }    
+    public static void main(String a[]){    
+        int[] a1= {10,20,30,50,70,90};    
+        int key = 50;    
+        System.out.println(key+" is found at index: "+linearSearch(a1, key));    
+    }    
+}    
+Output
+50 is found at index: 3
+
+63. write a program to copy all elements of one array to another array
+public class CopyArray {    
+    public static void main(String[] args) {        
+             //Initialize array     
+        int [] arr1 = new int [] {1, 2, 3, 4, 5};     
+         //Create another array arr2 with size of arr1    
+        int arr2[] = new int[arr1.length];    
+        //Copying all elements of one array into another    
+        for (int i = 0; i < arr1.length; i++) {     
+            arr2[i] = arr1[i];     
+        }      
+         //Displaying elements of array arr1     
+        System.out.println("Elements of original array: ");    
+        for (int i = 0; i < arr1.length; i++) {     
+           System.out.print(arr1[i] + " ");    
+        }     
+            
+        System.out.println();    
+            
+        //Displaying elements of array arr2     
+        System.out.println("Elements of new array: ");    
+        for (int i = 0; i < arr2.length; i++) {     
+           System.out.print(arr2[i] + " ");    
+        }     
+    }    
+}    
+Output:
+ Elements of original array
+1 2 3 4 5
+Elements of new array:
+1 2 3 4 5
+
+64. Transpose Matrix
+1.public class MatrixTransposeExample{  
+2.public static void main(String args[]){  
+3.//creating a matrix  
+4.int original[][]={{1,3,4},{2,4,3},{3,4,5}};    
+5.    
+6.//creating another matrix to store transpose of a matrix  
+7.int transpose[][]=new int[3][3];  //3 rows and 3 columns  
+8.    
+9.//Code to transpose a matrix  
+10.for(int i=0;i<3;i++){    
+11.for(int j=0;j<3;j++){    
+12.transpose[i][j]=original[j][i];  
+13.}    
+14.}    
+15.  
+16.System.out.println("Printing Matrix without transpose:");  
+17.for(int i=0;i<3;i++){    
+18.for(int j=0;j<3;j++){    
+19.System.out.print(original[i][j]+" ");    
+20.}    
+21.System.out.println();//new line    
+22.}    
+23.System.out.println("Printing Matrix After Transpose:");  
+24.for(int i=0;i<3;i++){    
+25.for(int j=0;j<3;j++){    
+26.System.out.print(transpose[i][j]+" ");    
+27.}    
+28.System.out.println();//new line    
+29.}    
+30.}}  
+
+Output
+Printing Matrix without transpose:
+1 3 4 
+2 4 3 
+3 4 5 
+Printing Matrix After Transpose:
+1 2 3 
+3 4 4 
+4 3 5
+
+65. Write a program to find the square root of a perfect square number(print both the positive and negative values)
+import java.util.Scanner;
+public class SquareRoot {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a perfect square number: ");
+        int num = scanner.nextInt();
+        if (num < 0) {
+            System.out.println("The square root of a negative number is imaginary.");
+            return;
+        }
+        int sqrt = (int) Math.sqrt(num);
+        if (sqrt * sqrt == num) {
+            System.out.println("The positive square root is " + sqrt);
+            System.out.println("The negative square root is " + (-sqrt));
+        } else {
+            System.out.println(num + " is not a perfect square.");
+        }
+    }
+}
+OUTPUT:
+Enter a perfect square number: 2
+2 is not a perfect square.
+
+66. Write a program that finds whether a given character is present in a string or not. In case it is present it prints the index at which it is present. Do not use built-in find functions to search the character.
+
+import java.util.Scanner;
+public class FindCharacter 
+{
+    public static void main(String[] args)
+ {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+        System.out.print("Enter a character: ");
+        char ch = scanner.next().charAt(0);
+        
+        int index = -1;
+        for (int i = 0; i < str.length(); i++) 
+{
+            if (str.charAt(i) == ch) 
+{
+                index = i;
+                break;
+            }
+        }
+        
+        if (index == -1) {
+            System.out.println("The character " + ch + " is not present in the string.");
+        } else {
+            System.out.println("The character " + ch + " is present at index " + index + " in the string.");
+        }
+    }
+}
+
+OUTPUT:
+Enter a string: geetha
+Enter a character: h
+The character h is present at index 4 in the string.
+
+
+67. Write a program to create a class Student with data ‘name, city and age’ along with method printData to display the data. Create the two objects s1 ,s2 to declare and access the values. 
+
+class Student 
+{ 
+String name, city; 
+int age; 
+static int m; 
+void printData() 
+{ 
+System.out.println("Student name = "+name); 
+System.out.println("Student city = "+city); 
+System.out.println("Student age = "+age); 
+} 
+} 
+Class Stest 
+{ 
+public static void main(String args[]) 
+{
+Student s1=new Student(); 
+Student s2=new Student(); 
+s1.name="Amit"; 
+s1.city="Dehradun"; 
+s1.age=22; 
+s2.name="Kapil"; 
+s2.city="Delhi"; 
+s2.age=23; 
+s2.printData(); 
+s1.printData(); 
+s1.m=20; 
+s2.m=22; 
+Student.m=27; 
+System.out.println("s1.m = "+s1.m); 
+System.out.println("s2.m = "+s2.m); 
+System.out.println("Student.m ="+Student.m); 
+} 
+} 
+
+68. Write a program to create a class Student2 along with two method getData(),printData() to get the value through argument and display the data in printData. Create the two objects s1 ,s2 to declare and access the values from class STtest.  
+
+class Student2 
+{ 
+private String name, city; 
+private int age; 
+public void getData(String x, Stringy, int t) 
+{ 
+name=x; 
+city=y; 
+age=t; 
+} 
+public void printData() 
+{ 
+System.out.println("Student name ="+name); 
+System.out.println("Student city ="+city); 
+System.out.println("Student age ="+age); 
+} 
+} 
+Class STtest 
+{ 
+public static void main(String args[]) 
+{ 
+Student2 s1=new Student2(); 
+Student2 s2=new Student2(); 
+s2.getData("Kapil","Delhi",23); 
+s2.printData(); 
+s1.getData("Amit","Dehradun",22); 
+s1.printData(); 
+} 
+}
+69. QUADRATIC EQUATION*/
+
+import java.util.Scanner;
+public class Exercise2 {
+  public static void main(String[] Strings) {
+        Scanner input = new Scanner(System.in);
+            System.out.print("Input a: ");
+            double a = input.nextDouble();
+            System.out.print("Input b: ");
+            double b = input.nextDouble();
+            System.out.print("Input c: ");
+            double c = input.nextDouble();
+
+            double result = b * b - 4.0 * a * c;
+
+            if (result > 0.0) 
+	{
+                double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * a);
+                double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * a);
+                System.out.println("The roots are " + r1 + " and " + r2);
+            } 
+	else if (result == 0.0)
+	 {
+                double r1 = -b / (2.0 * a);
+                System.out.println("The root is " + r1);
+            } 
+           else
+	 {
+                System.out.println("The equation has no real roots.");
+            }
+    }
+}
+OUTPUT
+Input a: 34
+Input b: 67
+Input c: 89
+The equation has no real roots.
+
+70. Write a program to create constructor overloading with the following members of student details (sno, sname, dept ) 
+
+import java.io.*;
+import java.lang.*;
+class student
+{
+   String name;
+   int rollno,age;
+   student()                                             // Default constuctor
+  {
+      name=" BSC CS/DS/AI ";
+      rollno=122345;
+      age=18;
+  }
+  student(String name1,int x,int y)       // Constructor with parameters
+  {
+      name=name1;
+      rollno=x;
+      age=y;
+  }
+}
+
+class c_overloading
+{
+   public static void main(String args[])throws IOException
+  {
+     student s1=new student();
+     student s2=new student(" XXX ",122346,17);
+             // Displaying results
+     System.out.println("\nStudent1 name : "+s1.name);
+     System.out.println("Student1 roll number : "+s1.rollno);
+     System.out.println("Student1 age : "+s1.age);
+     System.out.println("\nStudent2 name : "+s2.name);
+     System.out.println("Student2 roll number : "+s2.rollno);
+     System.out.println("Student2 age : "+s2.age);
+   }
+}
+
+OUTPUT
+Student1 name :  BSC CS/DA/AI
+Student1 roll number : 122345
+Student1 age : 18
+Student2 name :  XXX
+ Student2 roll number : 122346
+Student2 age : 17
+
+71. Write a program for shapes using Method overloading
+import java.io.*;
+import java.lang.*;
+class rectangle
+{
+   int l,b;
+   rectangle()                        // Method 1
+  {
+      l=12;
+      b=8;
+  }
+  rectangle(int x,int y)           // Method 2
+  {
+      l=x;
+      b=y;
+  }
+  int rectarea()
+ {
+     return (l*b);
+  }
+}
+
+class m_overloading
+{
+   public static void main(String args[])
+  {
+     rectangle rect1=new rectangle();
+     rectangle rect2=new rectangle(10,15);
+     int area1=rect1.rectarea();
+     int area2=rect2.rectarea();
+     System.out.println("Area of rectangle1 : "+area1);
+     System.out.println("Area of rectangle2 : "+area2);
+   }
+}
+OUTPUT
+Area of rectangle1 : 96
+Area of rectangle2 : 150
+
+72. write a program uisng Method overriding
+import java.io.*;
+class method1
+{
+  void display(String s1)
+  {
+     System.out.println(s1);
+  }
+}
+class method2 extends method1
+{
+  void display(String s1)
+  {
+     super.display(s1);
+     System.out.println(s1);
+  }
+}
+
+class overriding
+{
+   public static void main(String args[])
+  {
+     method1 ob1=new method1();
+     ob1.display("JAVA");
+     method2 ob2=new method2();
+     ob2.display("Overriding");
+   }
+}
+
+OUTPUT
+JAVA
+Overriding
+Overriding
+73. write a program for different types of exception
+import java.io.*;
+class error
+{
+       public static void main(String args[])throws IOException
+       {
+             int a[]={5,10}; 
+             int b=5;
+             try
+            {
+                  int x=a[2]/b-a[1];
+            }
+                         // Exceptions
+             catch(ArithmeticException e)
+            {
+                   System.out.println("Division by zero");
+             }
+            catch(ArrayIndexOutOfBoundsException e)
+            {
+                    System.out.println("Array index error");
+            }
+
+
+          catch(ArrayStoreException e)
+          {
+                System.out.println("Wrong data type");
+          }
+          finally
+          {
+                 System.out.println(" This is final ");
+           }
+           int y=a[1]/a[0];
+          System.out.println("y="+y);
+     }
+}
+OUTPUT
+Array index error
+This is final 
+y=2
+74. write a program for using Thread methods
+class A extends Thread
+{
+       public void run()
+       {
+               for(int i=1;i<=5;i++)
+              {
+                    if(i==1)
+                         yield();
+                    System.out.println("\tFrom Thread A : i = "+i);
+              }
+              System.out.println("Exit from A");
+       }
+}
+class B extends Thread
+{
+        public void run()
+        {
+              for(int j=1;j<=5;j++)
+              {
+                     System.out.println("\t From Thread B : j = "+j);
+
+
+                     if(j==3)
+                           stop();
+              }
+              System.out.println("Exit from B");
+        }
+}
+class C extends Thread
+{
+        public void run()
+        {
+               for(int k=1;k<=5;k++)
+               {
+                      System.out.println("\tFrom Thread C : k = "+k);
+                      if(k==1)
+                           try
+                           {
+                                  sleep(1000);
+                           }
+                           catch(Exception e)
+                           {
+                           }
+               }
+          
+               System.out.println("Exit from C");
+          }
+   }
+class threadmethod
+{
+      public static void main(String args[])
+      {
+             A threadA=new A();
+             B threadB=new B();
+             C threadC=new C();
+             System.out.println("Start thread A");
+             threadA.start(); 
+             System.out.println("Start thread B");
+             threadB.start();  
+             System.out.println("Start thread C");
+             threadC.start();
+             System.out.println("End of main thread");
+      }
+}
+OUTPUTT
+Start thread A
+Start thread B
+Start thread C
+End of main thread
+From Thread C : k = 1
+From Thread A : i = 1
+From Thread B : j = 1
+From Thread B : j = 2
+	 From Thread B : j = 3
+From Thread A : i = 2
+From Thread A : i = 3
+From Thread A : i = 4
+From Thread A : i = 5
+Exit from A
+From Thread C : k = 2
+From Thread C : k = 3
+	From Thread C : k = 4
+	From Thread C : k = 5
+Exit from C
+
+75. write a program to generate random numbers using Random class
+import java.lang.*; 
+import java.util.*;
+import java.io.*;
+class random1
+{
+     public static void main(String args[])throws IOException
+     {
+           int i=0,j=0,temp;
+           Random r=new Random();
+           int a[]=new int[10];
+           System.out.println("Random number generation : ");
+           for(i=0;i<10;i++)
+           {
+                a[i]=r.nextInt(100);
+                System.out.println(a[i]);
+           }
+           for(i=0;i<10;i++)
+               for(j=i+1;j<=9;j++)
+               {
+                    if(a[i]>a[j])
+                    {
+                         temp=a[i];
+                         a[i]=a[j];
+                         a[j]=temp;
+                    }
+               }
+            System.out.println("Ascending order : ");
+            for(i=0;i<10;i++)
+            {
+                  System.out.println(a[i]);
+             }
+             System.out.println("Descending order : ");
+             for(i=9;i>=0;i--)
+             {
+                  System.out.println(a[i]);
+             }
+     }
+}
+OUTPUT
+Random number generation : 28
+83
+49
+5
+71
+63
+39
+38
+51
+19
+Ascending order : 
+5
+19
+28
+38
+3949
+51
+63
+71
+83
+Descending order : 
+83
+71
+63
+51
+49
+39
+38
+28
+19
+5
+
+76. Develop a Java application to generate Electricity bill. Create a class with the following members: Consumer no., consumer name, previous month reading, and current month reading. Compute the bill amount using the following tariff.
+First 100 units – Rs. 1 per unit
+ 101-200 units – Rs. 2.50 per unit
+ 201 -500 units – Rs. 4 per unit
+> 501 units – Rs. 6 per unit	
+77.Write a program to  convert Fahrenheit to Celsius
+
+C= (F-32)/1.8
+
+78.Write a program to convert Celsius to Fahrenheit
+F=(C*1.8)+32
+
+79.Write a program to find Quadratic equation
+80.Write a program to swap the two numbers
+
+81Write a program to find out the given numbers is positive or negative or zero
+82.Write a program to find sum of N natural numbers
+
+1+ 2 + 3 + ………N
+
+83.Write a program to find sum of squares of N natural numbers
+12 + 22 + 32……+N2
+84. Write a program to create different shapes ( circle, rectangle, triangle, square) using method overloading
+
+85.Write a Java program to manipulate Employee information (eno, ename, dept, basic_pay)  of ABC company using parameterized   constructor.  
+Calculate Gross pay =  basic_pay + HRA ( 20% of basic)  + CCA	(2000 rupees).
+Net pay = Gross pay – Deductions (PF - 12% of basic). 
+Generate the pay bill to the employees with all the above details.
+
+86. compound interest
+
+
+
+
+                              //Set Color and Font
+import java.awt.*;
+import java.applet.*;
+public class sets extends Applet
+{
+/*<applet code="sets.class"width=500 height=500></applet>*/
+    public void paint(Graphics g)
+    {
+        Font f;
+        g.drawString(" Welcome to applet ",300,500);
+        setForeground(Color.red);
+        f=new Font("Arial",Font.BOLD,30);
+        setFont(f);
+    }
+}
+  
+
+                            // Draw various shapes
+import java.awt.*;
+import java.applet.*;
+/*<applet code="line.class"width=300 height=300></applet*/
+public class line extends Applet
+{
+     public void paint(Graphics g)
+     {
+           g.drawLine(10,10,50,50);
+           g.drawRect(10,60,40,30);
+           g.fillRect(60,10,30,80);
+           g.drawRoundRect(100,100,80,50,10,10);
+           g.fillRoundRect(20,100,60,30,5,5);
+           g.drawLine(100,20,130,140);
+           g.drawLine(100,140,230,10);
+           g.drawOval(190,100,50,80);
+      }
+}
+
+
+	
+                                 // Human face
+import java.awt.*;
+import java.applet.*;
+/*<applet code="face.class"width=300 height=300></applet>*/
+public class face extends Applet
+{
+    public void paint(Graphics g)
+    {
+          g.drawOval(40,40,120,150);                              // Head
+          g.drawOval(57,75,30,20);                                  // Left eye
+          g.drawOval(110,75,30,20);                                // Right eye
+          g.fillOval(68,81,10,10);                                     // Left pupil
+          g.fillOval(121,81,10,10);                                   // Right pupil
+          g.drawOval(85,100,30,30);                                // Nose
+          g.fillArc(60,125,80,40,180,180);                       // Mouth
+          g.drawOval(25,92,15,30);                                  // Left ear
+          g.drawOval(160,92,15,30);                                // Right ear
+     }
+}
+

@@ -1,0 +1,84 @@
+right triangle  
+
+import java.util.Scanner;
+
+public class triangle {
+    public static void main(String[] args)
+		{
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows for the right triangle: ");
+        int numRows = scanner.nextInt();
+
+        for (int i = 1; i <= numRows; i++) {
+          
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            
+            System.out.println();
+        }
+    }
+}
+
+factors
+import java.util.Scanner;
+public class factor
+{
+public static void main(String[] args)
+	{
+	Scanner s = new Scanner(System.in);
+	System.out.println("given number:");
+	int num=s.nextInt();
+	System.out.println("N:");
+	int n=s.nextInt();
+	int a[]=new int[100];
+	int x=0;
+	for(int i=1; i<=num; i++)
+		{
+		if(num%i==0){
+			a[x]=i;
+			x++;
+		}
+		}
+		System.out.println("number of factors:"+x);
+		System.out.println(n+"th factor of "+num+"="+a[n-1]);
+}
+}
+
+
+composite prime
+
+class primeandcomposite
+{
+	public static void main(String[] args) 
+	{
+		int arr[]={4,54,29,71,7,59,98,23};
+		
+		int pri=0,comp=0 ;
+		for(int i=1;i<arr.length;i++)
+		{
+			int C=0;
+			for(int j=1;j<arr[i];j++)
+			{
+				if(arr[i]%j==0)
+				C++;
+			}
+		
+		if(C > 1)
+		{
+			comp++;
+		}
+		else
+		{
+			pri++;
+		}
+		}
+		System.out.println("Composite number:"+comp);
+		System.out.println("Prime number:"+pri);
+
+
+	}
+}
+
+

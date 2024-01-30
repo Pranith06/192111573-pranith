@@ -1,0 +1,99 @@
+import java.util.Scanner;
+public class equilateral
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.print("enter the number of rows:");
+        int n = input.nextInt();
+		for(int i=n; i>1; i--)
+		{
+			for(int j=0; j<n-i; j++)
+			{
+				System.out.print(" ");
+			}
+				for(int k=1; k<i; k++)
+			{
+				 System.out.print(" *");
+				}
+			
+			System.out.print("\n");
+		}
+        }
+	}
+
+import java.util.Scanner;
+class marks 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the marks in python:");
+		int p=sc.nextInt();
+		System.out.print("\n"+"Enter the marks in c programming:");
+		int c=sc.nextInt();
+		System.out.print("\n"+"Enter the marks in Mathematics:");
+		int m=sc.nextInt();
+		System.out.print("\n"+"Enter the marks in Physics:");
+		int h=sc.nextInt();
+		int total=p+c+m+h;
+		float agg=total/4f;
+		System.out.print("\n"+"Total="+total);
+		System.out.print("\n"+"Aggregation="+agg);
+		if(agg>75)
+		{
+			System.out.print("\n"+"Distinction");
+		}
+		else if(agg<75 && agg>=60)
+		{
+			System.out.print("first division");
+		}
+		else if(agg<60 && agg>=50)
+		{
+			System.out.print("second division");
+		}
+		else if(agg<50 && agg>=40)
+		{
+			System.out.print("third division");
+		}
+		else
+		{
+			System.out.print("Fail");
+		}
+		
+	}
+}
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Perfect Square {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter lower range: ");
+        int lowerRange = scanner.nextInt();
+
+        System.out.print("Enter upper range: ");
+        int upperRange = scanner.nextInt();
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = lowerRange; i <= upperRange; i++)
+            if ((int) Math.sqrt(i) * (int) Math.sqrt(i) == i && digitSum(i) < 10)
+                result.add(i);
+
+        System.out.println(result);
+
+        scanner.close();
+    }
+
+    private static int digitSum(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+}
